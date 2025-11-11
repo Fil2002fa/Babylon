@@ -125,6 +125,19 @@ body{
   border: 0;
 }
 
+.button-logout{
+  background: var(--primary);
+  border: 1px solid transparent;
+  margin-top: 10px;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+ 
+}
+
 
 @media (max-width: 380px){
   .auth{ padding: 18px 16px; border-radius: 14px; }

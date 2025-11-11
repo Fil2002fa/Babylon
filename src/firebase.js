@@ -1,6 +1,7 @@
-import { initializeApp, getApps, getApp} from "firebase/app";
-
+// src/firebase.js (o dove hai il file)
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,9 +13,6 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-
-// Initialize Firebase
-const app =  !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const auth = getAuth(app)
-
- export {app, auth}
+export const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app); 

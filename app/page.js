@@ -3,7 +3,8 @@
 import React from "react";
 import { useState } from "react";
 import { useAuth } from "@/src/auth";
-import { updateProfile } from "firebase/auth";
+import { useRouter } from "next/navigation";
+
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ export default function Home() {
   const [isSignUp, setIsSignUp] = useState(true);
   const { signIn, signUp, user } = useAuth();
   const [error, setError] = useState(null);
+  const router = useRouter()
 
   const handleSwitch = () => {
     setIsSignUp((prev) => !prev);
@@ -19,7 +21,7 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password ) {
+    if (!email || !password || (isSignUp && !name)) {
       setError("Please fill in all required fields.");
       return;
     }
@@ -31,14 +33,13 @@ export default function Home() {
 
     try {
       if (isSignUp) {
-        const newUser = await signUp(email, password);
-        await updateProfile(newUser, { displayName: name });
+       await signUp(email, password, name);;
       } else {
         await signIn(email, password);
       }
-      
+      router.replace("/dashboard")
     } catch (err) {
-      setError(err.message); 
+      setError(err.message);
     }
   };
 
