@@ -1,2 +1,132 @@
-@import "tailwindcss";
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root{
+  --bg: #0f1115;
+  --card: #151923;
+  --muted: #8b93a7;
+  --text: #e8ecf3;
+  --primary: #6d5bd0;      /* viola tenue */
+  --primary-600: #5a49c1;
+  --ring: rgba(109,91,208,.45);
+  --border: #232838;
+}
+
+
+html, body { height: 100%; }
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(1200px 800px at 80% -20%, #1b2030 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 24px;
+}
+
+
+.auth{
+  width: 100%;
+  max-width: 380px;
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 20px;
+  
+ 
+}
+
+.auth__title{
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  
+}
+
+
+.auth__form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.auth__label{
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.auth__input{
+ 
+  width: 100%;
+  border: 1px solid var(--border);
+  background: #0f141f;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease, transform .06s ease;
+  outline: none;
+}
+.auth__input::placeholder{ color: #6e768b; }
+.auth__input:hover{ border-color: #2f3750; }
+.auth__input:focus{
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--ring);
+  background: #0e1320;
+  transform: translateY(-1px);
+}
+
+
+.auth__error{
+  color: #ff7a7a;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.auth__button--primary{
+  background: var(--primary);
+  border: 1px solid transparent;
+  margin-top: 6px;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+ 
+}
+
+
+.auth__button--link{
+  font-size: 12px;
+  color: var(--muted);
+  border: none;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  margin: 10px auto 0;
+  
+}
+
+
+.auth__divider{
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 10px 0 6px;
+  border: 0;
+}
+
+
+@media (max-width: 380px){
+  .auth{ padding: 18px 16px; border-radius: 14px; }
+  .auth__title{ font-size: 20px; }
+}
